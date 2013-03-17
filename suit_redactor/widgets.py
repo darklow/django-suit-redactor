@@ -1,30 +1,25 @@
+# from django.core.serializers import json
 from django.forms import Textarea
 from django.utils.safestring import mark_safe
-from django import forms
-from django.contrib.admin.templatetags.admin_static import static
+import json
 
 
+class RedactorWidget(Textarea):
+    class Media:
+        css = {
+            'all': ('suit-redactor/redactor/redactor.css',)
+        }
+        js = ('suit-redactor/redactor/redactor.min.js',)
 
-class RedactorTextarea(Textarea):
-    """
-    Autosized Textarea - textarea height dynamically grows based on user input
-    """
+    def __init__(self, attrs=None, editor_options=None):
+        super(RedactorWidget, self).__init__(attrs)
+        self.editor_options = editor_options or {}
 
-    def __init__(self, attrs=None):
-        attrs = attrs or {}
-        new_attrs = {'rows': 2}
-        new_attrs.update(attrs)
-        new_attrs['class'] = 'redactor %s' % (
-            attrs['class'] if 'class' in attrs else '')
-        super(RedactorTextarea, self).__init__(new_attrs)
-
-    @property
-    def media(self):
-        return forms.Media(js=[static('suit-redactor/redactor/redactor.min.js')])
 
     def render(self, name, value, attrs=None):
-        output = super(RedactorTextarea, self).render(name, value, attrs)
+        output = super(RedactorWidget, self).render(name, value, attrs)
         output += mark_safe(
-            "<script type=\"text/javascript\">$('#id_%s').redactor();</script>"
-            % name)
+            '<script type="text/javascript">$(\'#id_%s\').redactor('
+            '%s);</script>'
+            % (name, json.dumps(self.editor_options)))
         return output
