@@ -37,7 +37,6 @@ class WidgetsTestCase(TestCase):
 
     def test_RedactorWidget_media(self):
         widget = RedactorWidget()
-        print str(widget.media)
         js_url = static(widget.Media.js[0])
         css_url = static(widget.Media.css['all'][0])
         self.assertHTMLEqual(str(widget.media),
