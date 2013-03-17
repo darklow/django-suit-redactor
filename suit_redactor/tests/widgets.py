@@ -34,3 +34,14 @@ class WidgetsTestCase(TestCase):
             'type="text/javascript">$("#id_%s").redactor({"iframe": '
             'true});</script>' % (
                 name, value, name)))
+
+    def test_RedactorWidget_media(self):
+        widget = RedactorWidget()
+        print str(widget.media)
+        js_url = static(widget.Media.js[0])
+        css_url = static(widget.Media.css['all'][0])
+        self.assertHTMLEqual(str(widget.media),
+                             '<link href="%s" media="all" rel="stylesheet" '
+                             'type="text/css" /><script src="%s" '
+                             'type="text/javascript" />'
+                             % (css_url, js_url))
