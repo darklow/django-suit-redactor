@@ -3,7 +3,7 @@ from django.forms import Textarea
 from django.utils.safestring import mark_safe
 
 try: import json
-except ImportError: import simplejson as json
+except ImportError: import django.utils.simplejson as json
 
 
 class RedactorWidget(Textarea):
