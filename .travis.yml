@@ -5,7 +5,7 @@ python:
   - 2.7
   - 3.2
   - 3.3
-  - pypy  
+  - pypy
 env:
   - DJANGO=1.4.0
   - DJANGO=1.4.5
