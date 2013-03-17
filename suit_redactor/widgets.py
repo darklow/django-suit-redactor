@@ -1,7 +1,9 @@
 # from django.core.serializers import json
 from django.forms import Textarea
 from django.utils.safestring import mark_safe
-import json
+
+try: import json
+except ImportError: import simplejson as json
 
 
 class RedactorWidget(Textarea):
