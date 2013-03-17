@@ -19,7 +19,6 @@ class RedactorWidget(Textarea):
     def render(self, name, value, attrs=None):
         output = super(RedactorWidget, self).render(name, value, attrs)
         output += mark_safe(
-            '<script type="text/javascript">$(\'#id_%s\').redactor('
-            '%s);</script>'
+            '<script type="text/javascript">$("#id_%s").redactor(%s);</script>'
             % (name, json.dumps(self.editor_options)))
         return output
