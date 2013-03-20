@@ -14,6 +14,12 @@ Imperavi Redactor is licensed under `Creative Commons Attribution-NonCommercial 
 For commercial use please buy license here: http://redactorjs.com/download/ or use earlier version.
 
 
+Documentation
+=============
+
+See `Django Suit documentation <http://django-suit.readthedocs.org/en/develop/wysiwyg.html>`_ on WYSIWYG editors.
+
+
 Build Status
 ============
 
