@@ -13,9 +13,9 @@ class RedactorWidget(Textarea):
         }
         js = ('suit-redactor/redactor/redactor.min.js',)
 
-    def __init__(self, attrs=None, editor_options=None):
+    def __init__(self, attrs=None, editor_options={}):
         super(RedactorWidget, self).__init__(attrs)
-        self.editor_options = editor_options or {}
+        self.editor_options = editor_options
 
 
     def render(self, name, value, attrs=None):
