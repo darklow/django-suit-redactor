@@ -1,5 +1,5 @@
 from django.test import TestCase
-from suit_redactor.widgets import RedactorWidget
+from suit_redactor.widgets import RedactorWidget, FOCUS_SCRIPT
 from django.contrib.admin.templatetags.admin_static import static
 
 
@@ -21,8 +21,8 @@ class WidgetsTestCase(TestCase):
         output = widget.render(name, value)
         self.assertHTMLEqual(output, (
             '<textarea cols="40" name="%s" rows="10">%s</textarea><script '
-            'type="text/javascript">$("#id_%s").redactor({});</script>' % (
-                name, value, name)))
+            'type="text/javascript">$("#id_%s").redactor({});%s</script>' % (
+                name, value, name, FOCUS_SCRIPT)))
 
     def test_RedactorWidget_output_with_editor_options(self):
         widget = RedactorWidget(editor_options={'iframe': True})
@@ -32,8 +32,8 @@ class WidgetsTestCase(TestCase):
         self.assertHTMLEqual(output, (
             '<textarea cols="40" name="%s" rows="10">%s</textarea><script '
             'type="text/javascript">$("#id_%s").redactor({"iframe": '
-            'true});</script>' % (
-                name, value, name)))
+            'true});%s</script>' % (
+                name, value, name, FOCUS_SCRIPT)))
 
     def test_RedactorWidget_media(self):
         widget = RedactorWidget()
