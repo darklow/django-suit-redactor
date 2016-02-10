@@ -2,8 +2,10 @@
 from django.forms import Textarea
 from django.utils.safestring import mark_safe
 
-try: import json
-except ImportError: import django.utils.simplejson as json
+try:
+    import json
+except ImportError:
+    import django.utils.simplejson as json
 
 
 class RedactorWidget(Textarea):
@@ -11,12 +13,14 @@ class RedactorWidget(Textarea):
         css = {
             'all': ('suit-redactor/redactor/redactor.css',)
         }
-        js = ('suit-redactor/redactor/redactor.min.js',)
+        js = (
+            'suit-redactor/redactor/ensure.jquery.js',
+            'suit-redactor/redactor/redactor.min.js',
+        )
 
     def __init__(self, attrs=None, editor_options={}):
         super(RedactorWidget, self).__init__(attrs)
         self.editor_options = editor_options
-
 
     def render(self, name, value, attrs=None):
         output = super(RedactorWidget, self).render(name, value, attrs)
