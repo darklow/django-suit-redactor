@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-suit-redactor',
-    version='0.0.2',
+    version='0.0.3',
     description='Imperavi Redactor (WYSIWYG editor) integration app for Django admin. http://imperavi.com/redactor/',
     author='Kaspars Sprogis (darklow)',
     author_email='info@djangosuit.com',
