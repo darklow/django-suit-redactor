@@ -1,6 +1,7 @@
 # from django.core.serializers import json
 from django.forms import Textarea
 from django.utils.safestring import mark_safe
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 try:
     import json
@@ -11,11 +12,11 @@ except ImportError:
 class RedactorWidget(Textarea):
     class Media:
         css = {
-            'all': ('suit-redactor/redactor/redactor.css',)
+            'all': (static('suit-redactor/redactor/redactor.css'),)
         }
         js = (
-            'suit-redactor/redactor/ensure.jquery.js',
-            'suit-redactor/redactor/redactor.min.js',
+            static('suit-redactor/redactor/ensure.jquery.js'),
+            static('suit-redactor/redactor/redactor.min.js'),
         )
 
     def __init__(self, attrs=None, editor_options={}):

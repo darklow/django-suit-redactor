@@ -1,6 +1,6 @@
 from django.test import TestCase
 from suit_redactor.widgets import RedactorWidget
-from django.contrib.admin.templatetags.admin_static import static
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 class WidgetsTestCase(TestCase):
