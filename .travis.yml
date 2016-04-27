@@ -13,8 +13,8 @@ env:
 before_install:
   - export DJANGO_SETTINGS_MODULE=suit_redactor.tests.settings
 install:
-  - pip install -q Django==$DJANGO --use-mirrors
-  - pip install . --use-mirrors
+  - pip install -q Django==$DJANGO
+  - pip install -e .
 script:
   - python manage.py test suit_redactor
 matrix:
