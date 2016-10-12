@@ -37,10 +37,10 @@ class WidgetsTestCase(TestCase):
 
     def test_RedactorWidget_media(self):
         widget = RedactorWidget()
-        js_url = static(widget.Media.js[0])
+        js_url2 = static(widget.Media.js[0])
+        js_url1 = static(widget.Media.js[1])
         css_url = static(widget.Media.css['all'][0])
-        self.assertHTMLEqual(str(widget.media),
-                             '<link href="%s" media="all" rel="stylesheet" '
-                             'type="text/css" /><script src="%s" '
-                             'type="text/javascript" />'
-                             % (css_url, js_url))
+        media = str(widget.media)
+        self.assertTrue(js_url1 in media)
+        self.assertTrue(js_url2 in media)
+        self.assertTrue(css_url in media)

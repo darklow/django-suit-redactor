@@ -12,11 +12,11 @@ except ImportError:
 class RedactorWidget(Textarea):
     class Media:
         css = {
-            'all': (static('suit-redactor/redactor/redactor.css'),)
+            'all': ('suit-redactor/redactor/redactor.css',)
         }
         js = (
-            static('suit-redactor/redactor/ensure.jquery.js'),
-            static('suit-redactor/redactor/redactor.min.js'),
+            'suit-redactor/redactor/ensure.jquery.js',
+            'suit-redactor/redactor/redactor.min.js',
         )
 
     def __init__(self, attrs=None, editor_options={}):
