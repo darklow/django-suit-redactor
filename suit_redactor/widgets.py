@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     var id = subChild.id.match(%s);
                     if(id !== null && id[0] !== undefined){
                         $('#' + id[0]).redactor(%s);
-                        console.debug('Activate redactor for '+id[0]);
                     };
                 }
             });
