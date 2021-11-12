@@ -1,7 +1,7 @@
 # from django.core.serializers import json
 from django.forms import Textarea
 from django.utils.safestring import mark_safe
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 
 try:
     import json
@@ -23,8 +23,8 @@ class RedactorWidget(Textarea):
         super(RedactorWidget, self).__init__(attrs)
         self.editor_options = editor_options
 
-    def render(self, name, value, attrs=None):
-        output = super(RedactorWidget, self).render(name, value, attrs)
+    def render(self, name, value, attrs=None, renderer=None):
+        output = super(RedactorWidget, self).render(name, value, attrs, renderer=renderer)
         output += mark_safe(
             '<script type="text/javascript">$("#id_%s").redactor(%s);</script>'
             % (name, json.dumps(self.editor_options)))
